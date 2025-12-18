@@ -1,0 +1,19 @@
+global:
+  postgresql:
+    auth:
+      database: "kubsu_project_db"
+      username: "dbadmin"
+      password: "test"
+      postgresPassword: "test"
+
+primary:
+  initdb:
+    scriptsConfigMap: "postgres-init-script"
+  persistence:
+    enabled: true
+    size: 5Gi
+  # Service configuration for the primary database
+  service:
+    type: NodePort
+    nodePorts:
+      postgresql: 30432  # Maps service port 5432 to node port 50432
